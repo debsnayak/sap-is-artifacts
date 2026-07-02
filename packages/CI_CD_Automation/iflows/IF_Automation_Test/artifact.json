@@ -1,0 +1,9 @@
+{
+  "id": "IF_Automation_Test",
+  "name": "IF_Automation_Test",
+  "class": "iflow",
+  "package_id": "CICDAutomation",
+  "version": "1.0.2",
+  "sha256": "09d8d554aa3da21f4597bbfa12c4598f6d02e182182cb802c0589c660a0e2fba",
+  "synced_at": "2026-07-02T09:51:19.666537+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "IF_Automation_Test": {
+    "class": "iflow",
+    "content_sha256": "4b606e2c5ab28cff3d434892a355b7728d6d0670184d3bdb607594a5cba1cdba",
+    "last_synced": "2026-07-02T09:51:19.667259+00:00",
+    "name": "IF_Automation_Test",
+    "package_id": "CICDAutomation",
+    "source_sha256": "09d8d554aa3da21f4597bbfa12c4598f6d02e182182cb802c0589c660a0e2fba",
+    "version": "1.0.2"
+  },
+  "IF_Automation_Test2": {
+    "class": "iflow",
+    "content_sha256": "b7296b48df1703bb9b2f2f5405a578b3445c24dc8a0c3c35e678868f01042cb7",
+    "last_synced": "2026-07-02T09:51:18.911625+00:00",
+    "name": "IF_Automation_Test2",
+    "package_id": "CICDAutomation",
+    "source_sha256": "4defd2db2ec21ccd8c3dec2e6c874ecdf135984ba451d16b912af4f979abeb11",
+    "version": "1.0.1"
+  },
+  "MM_TestMapping": {
+    "class": "message_mapping",
+    "content_sha256": "be9ca4a8d2183ed964c480af650e15fd515662fb81b666a6104d8d8c99e5879c",
+    "last_synced": "2026-07-02T09:51:20.765143+00:00",
+    "name": "MM_TestMapping",
+    "package_id": "CICDAutomation",
+    "source_sha256": "f47b913c755d8351aeb4eb7126e7b3596b6826edfffc6998c059ad46fb07fab3",
+    "version": "1.1.2"
+  }
+}
