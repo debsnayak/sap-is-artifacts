@@ -1,0 +1,60 @@
+name: sap-is-nightly-sync
+
+on:
+  schedule:
+    - cron: "0 2 * * *"      # 02:00 UTC nightly
+  workflow_dispatch: {}       # allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run SAP IS -> GitHub sync
+        id: sync
+        env:
+          SAP_IS_PRD_CLIENT_ID: ${{ secrets.SAP_IS_PRD_CLIENT_ID }}
+          SAP_IS_PRD_CLIENT_SECRET: ${{ secrets.SAP_IS_PRD_CLIENT_SECRET }}
+          DRIFT_NOTIFY_WEBHOOK_URL: ${{ secrets.DRIFT_NOTIFY_WEBHOOK_URL }}
+        run: |
+          python scripts/sap_is_github_sync.py --env PRD --config config/environments.yaml
+        continue-on-error: true
+
+      - name: Open issue on drift
+        if: steps.sync.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('drift_report/latest.json', 'utf8'));
+            const body = [
+              `Forward drift: ${report.forward_drift.length}`,
+              `Reverse drift: ${report.reverse_drift.length}`,
+              `Certificate warnings: ${report.cert_drift.length}`,
+              '',
+              '```json',
+              JSON.stringify(report, null, 2),
+              '```',
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `SAP IS <-> GitHub drift detected - ${new Date().toISOString().slice(0,10)}`,
+              body,
+              labels: ['sap-is-sync', 'drift'],
+            });
