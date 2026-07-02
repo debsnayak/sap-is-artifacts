@@ -1,0 +1,20 @@
+environments:
+  PRD:
+    host: "https://myTenant-rt.cfapps.eu10.hana.ondemand.com"
+    token_url: "https://myTenant.authentication.eu10.hana.ondemand.com/oauth/token"
+    client_id: "${SAP_IS_PRD_CLIENT_ID}"
+    client_secret: "${SAP_IS_PRD_CLIENT_SECRET}"
+    repo_dir: "."                # path to the checked-out repo (CI sets this to $GITHUB_WORKSPACE)
+    branch: "main"
+    git_remote: "origin"
+    cert_expiry_warning_days: 30
+    verify_ssl: true
+
+  QA:
+    host: "https://myTenant-qa-rt.cfapps.eu10.hana.ondemand.com"
+    token_url: "https://myTenant-qa.authentication.eu10.hana.ondemand.com/oauth/token"
+    client_id: "${SAP_IS_QA_CLIENT_ID}"
+    client_secret: "${SAP_IS_QA_CLIENT_SECRET}"
+    repo_dir: "."
+    branch: "release/qa"
+    cert_expiry_warning_days: 30
