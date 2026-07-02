@@ -138,7 +138,18 @@ class SapIsClient:
         url = f"{self.cfg.host}/api/v1/{path}"
         resp = self._session.get(url, params=params, verify=self.cfg.verify_ssl, timeout=60)
         resp.raise_for_status()
-        return resp.json().get("d", {})
+        try:
+            return resp.json().get("d", {})
+        except ValueError:
+            snippet = resp.text[:300].replace("\n", " ")
+            content_type = resp.headers.get("Content-Type", "unknown")
+            raise RuntimeError(
+                f"Non-JSON response from {url} "
+                f"(status={resp.status_code}, content-type={content_type}). "
+                f"This usually means 'host' in the config points at the wrong SAP IS endpoint "
+                f"(e.g. the runtime '-rt' host instead of the management/API host). "
+                f"Response body starts with: {snippet!r}"
+            ) from None
 
     def list_packages(self) -> list:
         data = self._api("IntegrationPackages")
