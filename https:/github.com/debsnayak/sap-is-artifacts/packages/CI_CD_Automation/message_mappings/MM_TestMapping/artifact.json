@@ -1,0 +1,9 @@
+{
+  "id": "MM_TestMapping",
+  "name": "MM_TestMapping",
+  "class": "message_mapping",
+  "package_id": "CICDAutomation",
+  "version": "1.1.2",
+  "sha256": "660a4927149356b0554fa4f066d6a7d2caa250f988e36074de88fcbe7394527e",
+  "synced_at": "2026-07-02T09:44:39.415897+00:00"
+}
