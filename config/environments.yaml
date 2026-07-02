@@ -1,10 +1,10 @@
 environments:
   PRD:
-    host: "https://inccpidev.integrationsuite.cfapps.eu10.hana.ondemand.com"
+    host: "https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com"
     token_url: "https://inccpidev.authentication.eu10.hana.ondemand.com/oauth/token"
     client_id: "sb-28bf8e67-9030-456e-9152-b1cb433c2b4f!b63626|it!b16077"
     client_secret: "21d76727-efd4-499c-ab84-7cdf088e93b2$IgvdYL0OkQmv0XqMk_IiRLaaq0H64HHEKwNC6-ifw4s="
-    repo_dir: "."                # path to the checked-out repo (CI sets this to $GITHUB_WORKSPACE)
+    repo_dir: "https://github.com/debsnayak/sap-is-artifacts"                # path to the checked-out repo (CI sets this to $GITHUB_WORKSPACE)
     branch: "main"
     git_remote: "origin"
     cert_expiry_warning_days: 30
