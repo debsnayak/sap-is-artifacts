@@ -47,6 +47,16 @@ logging.basicConfig(
 )
 log = logging.getLogger("sap_is_github_sync")
 
+
+def atomic_write_text(path: Path, content: str):
+    """Write content to path atomically - either the full new content lands, or the old
+    file is left untouched. Prevents a killed/cancelled run from leaving a truncated
+    (non-empty but invalid) JSON file behind."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + f".tmp{os.getpid()}")
+    tmp.write_text(content)
+    os.replace(tmp, path)  # atomic on POSIX and Windows
+
 # --------------------------------------------------------------------------
 # Config
 # --------------------------------------------------------------------------
@@ -206,8 +216,15 @@ class Manifest:
     def __init__(self, path: Path):
         self.path = path
         self.data: dict = {}
-        if path.exists():
-            self.data = json.loads(path.read_text())
+        if path.exists() and path.stat().st_size > 0:
+            try:
+                self.data = json.loads(path.read_text())
+            except json.JSONDecodeError as ex:
+                log.warning(
+                    "sync_manifest.json exists but could not be parsed (%s) - treating as empty. "
+                    "Every artifact will be re-evaluated as new this run.", ex
+                )
+                self.data = {}
 
     def get(self, artifact_id: str) -> Optional[dict]:
         return self.data.get(artifact_id)
@@ -219,7 +236,7 @@ class Manifest:
 
     def save(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.path.write_text(json.dumps(self.data, indent=2, sort_keys=True))
+        atomic_write_text(self.path, json.dumps(self.data, indent=2, sort_keys=True))
 
 
 # --------------------------------------------------------------------------
@@ -286,17 +303,32 @@ class DriftReport:
 
 
 class SyncEngine:
-    def __init__(self, cfg: EnvConfig, client: SapIsClient, dry_run: bool = False):
+    def __init__(self, cfg: EnvConfig, client: SapIsClient, dry_run: bool = False, package_filter: list = None):
         self.cfg = cfg
         self.client = client
         self.dry_run = dry_run
         self.repo_root = Path(cfg.repo_dir)
         self.manifest = Manifest(self.repo_root / "sync_manifest.json")
         self.report = DriftReport()
+        # Case-insensitive match against either the package Id or the package Name
+        self.package_filter = {p.strip().lower() for p in package_filter} if package_filter else None
 
     def run(self):
         packages = self.client.list_packages()
-        log.info("Found %d integration package(s)", len(packages))
+        log.info("Found %d integration package(s) on tenant", len(packages))
+
+        if self.package_filter:
+            before = len(packages)
+            packages = [
+                p for p in packages
+                if p.get("Id", "").lower() in self.package_filter
+                or p.get("Name", "").lower() in self.package_filter
+            ]
+            matched = {p.get("Id", "").lower() for p in packages} | {p.get("Name", "").lower() for p in packages}
+            unmatched = self.package_filter - matched
+            if unmatched:
+                log.warning("No match found on tenant for requested package(s): %s", ", ".join(sorted(unmatched)))
+            log.info("Package filter applied: %d of %d package(s) selected", len(packages), before)
 
         for pkg in packages:
             pkg_id = pkg["Id"]
@@ -331,7 +363,7 @@ class SyncEngine:
             "description": pkg.get("ShortText") or pkg.get("Description"),
             "mode": pkg.get("Mode"),
         }
-        (pkg_dir / "package.json").write_text(json.dumps(meta, indent=2))
+        atomic_write_text(pkg_dir / "package.json", json.dumps(meta, indent=2))
 
     # -- per-artifact processing -------------------------------------------
 
@@ -384,7 +416,7 @@ class SyncEngine:
 
         if not self.dry_run:
             extract_zip(content, artifact_dir)
-            (artifact_dir / "artifact.json").write_text(json.dumps({
+            atomic_write_text(artifact_dir / "artifact.json", json.dumps({
                 "id": artifact_id,
                 "name": art.get("Name"),
                 "class": cls_key,
@@ -473,9 +505,10 @@ class SyncEngine:
         payload = self.report.to_dict()
 
         if not self.dry_run:
-            report_path.write_text(json.dumps(payload, indent=2))
+            content = json.dumps(payload, indent=2)
+            atomic_write_text(report_path, content)
             latest = report_dir / "latest.json"
-            latest.write_text(json.dumps(payload, indent=2))
+            atomic_write_text(latest, content)
 
         log.info("Sync summary: %d synced, %d forward drift, %d reverse drift, %d cert warning(s)",
                   len(self.report.synced), len(self.report.forward_drift),
@@ -543,13 +576,33 @@ def main():
     parser.add_argument("--config", required=True, help="Path to environments.yaml")
     parser.add_argument("--dry-run", action="store_true", help="Do not write files or push to git")
     parser.add_argument("--no-push", action="store_true", help="Write files/commit locally but do not push")
+    parser.add_argument(
+        "--packages",
+        help="Comma-separated list of Integration Package Id(s) or Name(s) to sync. "
+             "If omitted, ALL packages on the tenant are synced.",
+    )
+    parser.add_argument(
+        "--list-packages",
+        action="store_true",
+        help="Authenticate, print every package Id/Name available on the tenant, and exit "
+             "(use this first to find the exact names to pass to --packages).",
+    )
     args = parser.parse_args()
 
     cfg = load_config(args.config, args.env)
     client = SapIsClient(cfg)
     client.authenticate()
 
-    engine = SyncEngine(cfg, client, dry_run=args.dry_run)
+    if args.list_packages:
+        packages = client.list_packages()
+        log.info("%d package(s) available on tenant '%s':", len(packages), cfg.name)
+        for p in packages:
+            print(f"  Id={p.get('Id')}\tName={p.get('Name')}")
+        return
+
+    package_filter = [p for p in args.packages.split(",")] if args.packages else None
+
+    engine = SyncEngine(cfg, client, dry_run=args.dry_run, package_filter=package_filter)
     if args.no_push:
         engine._commit_and_push = lambda: log.info("--no-push set: skipping push")  # noqa: SLF001
 
