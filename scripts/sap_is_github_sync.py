@@ -141,12 +141,19 @@ class SapIsClient:
         )
         resp.raise_for_status()
         self._token = resp.json()["access_token"]
-        self._session.headers.update({"Authorization": f"Bearer {self._token}"})
+        self._session.headers.update({
+            "Authorization": f"Bearer {self._token}",
+            "Accept": "application/json",
+        })
         log.info("Authenticated OK")
 
     def _api(self, path: str, params: dict = None) -> dict:
         url = f"{self.cfg.host}/api/v1/{path}"
-        resp = self._session.get(url, params=params, verify=self.cfg.verify_ssl, timeout=60)
+        # SAP IS OData v2 services default to Atom/XML unless JSON is explicitly requested.
+        # The Accept header (set in authenticate()) covers most cases; $format=json is the
+        # OData v2 belt-and-braces query param some tenants still require.
+        merged_params = {"$format": "json", **(params or {})}
+        resp = self._session.get(url, params=merged_params, verify=self.cfg.verify_ssl, timeout=60)
         resp.raise_for_status()
         try:
             return resp.json().get("d", {})
@@ -156,9 +163,10 @@ class SapIsClient:
             raise RuntimeError(
                 f"Non-JSON response from {url} "
                 f"(status={resp.status_code}, content-type={content_type}). "
-                f"This usually means 'host' in the config points at the wrong SAP IS endpoint "
-                f"(e.g. the runtime '-rt' host instead of the management/API host). "
-                f"Response body starts with: {snippet!r}"
+                f"The host/endpoint is likely correct, but the tenant returned Atom/XML instead of JSON "
+                f"(SAP IS OData v2 default format). If this persists even with Accept: application/json "
+                f"and $format=json set, check whether an intermediary (proxy/API gateway) is stripping "
+                f"the Accept header. Response body starts with: {snippet!r}"
             ) from None
 
     def list_packages(self) -> list:
