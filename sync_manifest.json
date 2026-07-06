@@ -6,7 +6,7 @@
     "name": "IF_Automation_Test",
     "package_id": "CICDAutomation",
     "source_sha256": "09d8d554aa3da21f4597bbfa12c4598f6d02e182182cb802c0589c660a0e2fba",
-    "version": "1.0.2"
+    "version": "1.0.1"
   },
   "IF_Automation_Test2": {
     "class": "iflow",
@@ -15,7 +15,7 @@
     "name": "IF_Automation_Test2",
     "package_id": "CICDAutomation",
     "source_sha256": "4defd2db2ec21ccd8c3dec2e6c874ecdf135984ba451d16b912af4f979abeb11",
-    "version": "1.0.1"
+    "version": "1.0.0"
   },
   "MM_TestMapping": {
     "class": "message_mapping",
@@ -24,6 +24,6 @@
     "name": "MM_TestMapping",
     "package_id": "CICDAutomation",
     "source_sha256": "f47b913c755d8351aeb4eb7126e7b3596b6826edfffc6998c059ad46fb07fab3",
-    "version": "1.1.2"
+    "version": "1.1.1"
   }
 }
