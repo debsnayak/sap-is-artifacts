@@ -1,29 +1,29 @@
 {
   "IF_Automation_Test": {
     "class": "iflow",
-    "content_sha256": "4b606e2c5ab28cff3d434892a355b7728d6d0670184d3bdb607594a5cba1cdba",
-    "last_synced": "2026-07-02T09:51:19.667259+00:00",
+    "content_sha256": "13b3b573f0930a07b306f75c7431520df7b020e949efea05ff3e817bfe3533c8",
+    "last_synced": "2026-07-06T15:49:03.649161+00:00",
     "name": "IF_Automation_Test",
     "package_id": "CICDAutomation",
-    "source_sha256": "09d8d554aa3da21f4597bbfa12c4598f6d02e182182cb802c0589c660a0e2fba",
-    "version": "1.0.1"
+    "source_sha256": "c6ad9ed8229cc81fbb223cd5be7159442eda83583ca14d0b9346ed7a03e9a769",
+    "version": "1.0.2"
   },
   "IF_Automation_Test2": {
     "class": "iflow",
-    "content_sha256": "b7296b48df1703bb9b2f2f5405a578b3445c24dc8a0c3c35e678868f01042cb7",
-    "last_synced": "2026-07-02T09:51:18.911625+00:00",
+    "content_sha256": "3b68b3a73bec0701619d9ba5d85609b74d520b5fe497c9a4abba791a5fb89ad2",
+    "last_synced": "2026-07-06T15:49:02.968540+00:00",
     "name": "IF_Automation_Test2",
     "package_id": "CICDAutomation",
-    "source_sha256": "4defd2db2ec21ccd8c3dec2e6c874ecdf135984ba451d16b912af4f979abeb11",
-    "version": "1.0.0"
+    "source_sha256": "085b134eb9818c59cae8d897f58a023fdc45235560a579791e2885c7c94a625c",
+    "version": "1.0.1"
   },
   "MM_TestMapping": {
     "class": "message_mapping",
-    "content_sha256": "be9ca4a8d2183ed964c480af650e15fd515662fb81b666a6104d8d8c99e5879c",
-    "last_synced": "2026-07-02T09:51:20.765143+00:00",
+    "content_sha256": "d644d104bab68a9b5a0e17ff35d2bf12ad89d9fe42a9bb8307480878edf327fe",
+    "last_synced": "2026-07-06T15:49:04.728738+00:00",
     "name": "MM_TestMapping",
     "package_id": "CICDAutomation",
-    "source_sha256": "f47b913c755d8351aeb4eb7126e7b3596b6826edfffc6998c059ad46fb07fab3",
-    "version": "1.1.1"
+    "source_sha256": "ad106946a85a9f3fd651f390432488d64697f624c7508322c71af4d3c0f923ea",
+    "version": "1.1.2"
   }
 }
