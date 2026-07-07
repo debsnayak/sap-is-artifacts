@@ -1,9 +1,10 @@
-2026-07-07 10:44:57 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-07 10:44:58 | INFO    | Authenticated OK
-2026-07-07 10:44:59 | INFO    | Found 948 integration package(s) on tenant
-2026-07-07 10:44:59 | INFO    | Package filter applied: 1 of 948 package(s) selected
-2026-07-07 10:44:59 | INFO    | New version detected: [iflow] IF_Automation_Test2  (none) -> 1.0.1
-2026-07-07 10:45:00 | INFO    | New version detected: [iflow] IF_Automation_Test  (none) -> 1.0.2
-2026-07-07 10:45:02 | INFO    | New version detected: [message_mapping] MM_TestMapping  (none) -> 1.1.2
-2026-07-07 10:45:03 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-07 10:45:03 | INFO    | Sync summary: 3 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 10:57:01 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-07 10:57:01 | INFO    | Authenticated OK
+2026-07-07 10:57:03 | INFO    | Found 948 integration package(s) on tenant
+2026-07-07 10:57:03 | INFO    | Package filter applied: 1 of 948 package(s) selected
+2026-07-07 10:57:03 | INFO    | New package version detected: CI_CD_Automation  (none) -> 1.0.0
+2026-07-07 10:57:09 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-07 10:57:09 | INFO    | Sync summary: 1 synced, 3 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 10:57:09 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
+2026-07-07 10:57:09 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test]
+2026-07-07 10:57:09 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
