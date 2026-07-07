@@ -201,6 +201,17 @@ class SapIsClient:
         resp.raise_for_status()
         return resp.content
 
+    def download_package_content(self, package_id: str) -> bytes:
+        # GET .../IntegrationPackages('Id')/$value returns the ENTIRE package as a zip -
+        # same $value convention as individual artifacts, just at the package level.
+        # Note: packages in "Configure Only" mode cannot be exported this way - SAP IS
+        # returns an error for those; callers should treat that as skip-with-warning,
+        # not a fatal failure of the whole run.
+        url = f"{self.cfg.host}/api/v1/IntegrationPackages('{package_id}')/$value"
+        resp = self._session.get(url, verify=self.cfg.verify_ssl, timeout=300)
+        resp.raise_for_status()
+        return resp.content
+
     def list_security_material(self) -> list:
         # Certificates / keystore entries - metadata only, never the key material itself
         try:
@@ -384,6 +395,7 @@ class SyncEngine:
             pkg_name = safe_name(pkg.get("Name", pkg_id))
             pkg_dir = self.repo_root / "packages" / pkg_name
             self._write_package_manifest(pkg_dir, pkg)
+            self._process_package_zip(pkg_id, pkg_name, pkg_dir, pkg)
 
             for cls_key, cls_meta in ARTIFACT_CLASSES.items():
                 artifacts = self.client.list_artifacts(pkg_id, cls_meta["entity"])
@@ -413,6 +425,82 @@ class SyncEngine:
             "mode": pkg.get("Mode"),
         }
         atomic_write_text(pkg_dir / "package.json", json.dumps(meta, indent=2))
+
+    def _process_package_zip(self, pkg_id: str, pkg_name: str, pkg_dir: Path, pkg: dict):
+        """Whole-package export: the entire Integration Package as a single zip, stored
+        exactly as SAP IS returns it - byte-for-byte, same principle as individual
+        artifacts. Restoring a whole package is then just: pull this one file, Import.
+        Manifest key is namespaced (package:<id>) so it never collides with an artifact ID.
+        """
+        if pkg.get("Mode") == "CONFIGURE_ONLY":
+            log.info("Package '%s' is Configure Only - whole-package export not supported by SAP IS, skipping", pkg_name)
+            return
+
+        manifest_key = f"package:{pkg_id}"
+        current_version = str(pkg.get("Version"))
+        manifest_entry = self.manifest.get(manifest_key)
+
+        package_zip_path = pkg_dir / f"{pkg_name}.zip"
+
+        # --- Reverse drift check ---
+        if manifest_entry and package_zip_path.exists():
+            on_disk_hash = sha256_bytes(package_zip_path.read_bytes())
+            if on_disk_hash != manifest_entry.get("content_sha256"):
+                self.report.reverse_drift.append({
+                    "artifact_id": manifest_key,
+                    "name": pkg_name,
+                    "package": pkg_name,
+                    "message": "Package zip differs from last synced state without a new sync run "
+                               "- possible manual edit in Git outside the pipeline.",
+                })
+
+        needs_sync = (manifest_entry is None) or (manifest_entry.get("version") != current_version)
+
+        try:
+            if not needs_sync:
+                if manifest_entry:
+                    content = self.client.download_package_content(pkg_id)
+                    content_hash = sha256_bytes(content)
+                    if content_hash != manifest_entry.get("source_sha256"):
+                        self.report.forward_drift.append({
+                            "artifact_id": manifest_key,
+                            "name": pkg_name,
+                            "package": pkg_name,
+                            "version": current_version,
+                            "message": "SAP IS package content checksum changed without a version increment.",
+                        })
+                return
+
+            log.info("New package version detected: %s  %s -> %s",
+                     pkg_name, manifest_entry.get("version") if manifest_entry else "(none)", current_version)
+            content = self.client.download_package_content(pkg_id)
+            source_hash = sha256_bytes(content)
+
+            if not self.dry_run:
+                atomic_write_bytes(package_zip_path, content)
+                content_hash = source_hash
+            else:
+                content_hash = source_hash
+
+            self.manifest.update(
+                manifest_key,
+                **{
+                    "class": "package",
+                    "package_id": pkg_id,
+                    "name": pkg_name,
+                    "version": current_version,
+                    "source_sha256": source_hash,
+                    "content_sha256": content_hash,
+                },
+            )
+            self.report.synced.append({
+                "artifact_id": manifest_key, "name": pkg_name, "package": pkg_name,
+                "class": "package", "version": current_version,
+            })
+        except requests.HTTPError as ex:
+            status = ex.response.status_code if ex.response is not None else "?"
+            log.warning("Whole-package export failed for '%s' (HTTP %s) - skipping package-level zip "
+                        "this run; individual artifact sync is unaffected. %s", pkg_name, status, ex)
 
     # -- per-artifact processing -------------------------------------------
 
