@@ -8,6 +8,33 @@
     "source_sha256": "fb751b8d169f1fea8b322a6313f1d6e35add53b0920ed1bafa48a2caca2f3c68",
     "version": "1.0.0"
   },
+  "IF_Automation_Test": {
+    "class": "iflow",
+    "content_sha256": "afd5fc731bc64cf4149c0bde30a0ea95ab240a339bb0152ddc391f4ace5927e8",
+    "last_synced": "2026-07-07T12:01:18.479429+00:00",
+    "name": "IF_Automation_Test",
+    "package_id": "CICDAutomation",
+    "source_sha256": "afd5fc731bc64cf4149c0bde30a0ea95ab240a339bb0152ddc391f4ace5927e8",
+    "version": "1.0.2"
+  },
+  "IF_Automation_Test2": {
+    "class": "iflow",
+    "content_sha256": "126bee524413df518b0fa5b977aded78d30f6201fb13989fcdd9c15134988abc",
+    "last_synced": "2026-07-07T12:01:17.797638+00:00",
+    "name": "IF_Automation_Test2",
+    "package_id": "CICDAutomation",
+    "source_sha256": "126bee524413df518b0fa5b977aded78d30f6201fb13989fcdd9c15134988abc",
+    "version": "1.0.1"
+  },
+  "MM_TestMapping": {
+    "class": "message_mapping",
+    "content_sha256": "ad0b7be44cb8e77a5993276b5713a9488a868fdc6b04d42eb7b13678e20b6cc6",
+    "last_synced": "2026-07-07T12:01:19.683624+00:00",
+    "name": "MM_TestMapping",
+    "package_id": "CICDAutomation",
+    "source_sha256": "ad0b7be44cb8e77a5993276b5713a9488a868fdc6b04d42eb7b13678e20b6cc6",
+    "version": "1.1.2"
+  },
   "Persist_Payload_Process": {
     "class": "iflow",
     "content_sha256": "b62d6a9a2d9fa5b38d8172b1522510091c5b8a8a04c585d9b81137ca4d565f53",
@@ -52,6 +79,15 @@
     "package_id": "AAA",
     "source_sha256": "2cdc0ffda29877c679f233cfd15ea5963cd0dfc80e3e1b2f267daf765d4959c2",
     "version": "Active"
+  },
+  "package:CICDAutomation": {
+    "class": "package",
+    "content_sha256": "48bbb59c9d2247c805f4eb4db17bef202f9f10ab93c7feb904cb0d7dc8ef0b4e",
+    "last_synced": "2026-07-07T12:01:16.532742+00:00",
+    "name": "CI_CD_Automation",
+    "package_id": "CICDAutomation",
+    "source_sha256": "48bbb59c9d2247c805f4eb4db17bef202f9f10ab93c7feb904cb0d7dc8ef0b4e",
+    "version": "1.0.0"
   },
   "test_123": {
     "class": "iflow",

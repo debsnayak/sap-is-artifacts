@@ -1,15 +1,10 @@
-2026-07-07 12:00:20 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-07 12:00:21 | INFO    | Authenticated OK
-2026-07-07 12:00:22 | INFO    | Found 949 integration package(s) on tenant
-2026-07-07 12:00:22 | INFO    | Package filter applied: 1 of 949 package(s) selected
-2026-07-07 12:00:22 | INFO    | New package version detected: AAA  (none) -> 1.0.0
-2026-07-07 12:00:29 | WARNING | Whole-package export failed for 'AAA' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('AAA')/$value
-2026-07-07 12:00:29 | INFO    | New version detected: [iflow] test  (none) -> 1.0.1
-2026-07-07 12:00:30 | INFO    | New version detected: [iflow] WK_TEST_2  (none) -> Active
-2026-07-07 12:00:31 | INFO    | New version detected: [iflow] Reusable_Notification_Framework  (none) -> Active
-2026-07-07 12:00:32 | INFO    | New version detected: [iflow] Reusable_Retry_Framework  (none) -> Active
-2026-07-07 12:00:32 | INFO    | New version detected: [iflow] Persist_Payload_Process  (none) -> Active
-2026-07-07 12:00:33 | INFO    | New version detected: [iflow] Demo_-_Order_Create_S4_to_External_OMS  (none) -> 1.0.0
-2026-07-07 12:00:34 | INFO    | New version detected: [iflow] WK_TEST_1  (none) -> Active
-2026-07-07 12:00:35 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-07 12:00:35 | INFO    | Sync summary: 7 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 12:01:12 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-07 12:01:12 | INFO    | Authenticated OK
+2026-07-07 12:01:14 | INFO    | Found 949 integration package(s) on tenant
+2026-07-07 12:01:14 | INFO    | Package filter applied: 1 of 949 package(s) selected
+2026-07-07 12:01:14 | INFO    | New package version detected: CI_CD_Automation  (none) -> 1.0.0
+2026-07-07 12:01:16 | INFO    | New version detected: [iflow] IF_Automation_Test2  (none) -> 1.0.1
+2026-07-07 12:01:17 | INFO    | New version detected: [iflow] IF_Automation_Test  (none) -> 1.0.2
+2026-07-07 12:01:19 | INFO    | New version detected: [message_mapping] MM_TestMapping  (none) -> 1.1.2
+2026-07-07 12:01:20 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-07 12:01:20 | INFO    | Sync summary: 4 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
