@@ -1,0 +1,9 @@
+{
+  "id": "test_123",
+  "name": "test",
+  "class": "iflow",
+  "package_id": "AAA",
+  "version": "1.0.1",
+  "sha256": "f6aa9eff9928e84f2002c24659959a3e010b7585a009c86cfee7c0763606f34c",
+  "synced_at": "2026-07-07T12:00:30.500330+00:00"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "Persist_Payload_Process",
+  "name": "Persist Payload Process",
+  "class": "iflow",
+  "package_id": "AAA",
+  "version": "Active",
+  "sha256": "b62d6a9a2d9fa5b38d8172b1522510091c5b8a8a04c585d9b81137ca4d565f53",
+  "synced_at": "2026-07-07T12:00:33.257331+00:00"
+}
