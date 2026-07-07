@@ -6,7 +6,7 @@
     "name": "IF_Automation_Test",
     "package_id": "CICDAutomation",
     "source_sha256": "c6ad9ed8229cc81fbb223cd5be7159442eda83583ca14d0b9346ed7a03e9a769",
-    "version": "1.0.2"
+    "version": "1.0.1"
   },
   "IF_Automation_Test2": {
     "class": "iflow",
