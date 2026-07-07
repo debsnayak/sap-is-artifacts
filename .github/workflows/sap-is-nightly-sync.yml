@@ -37,8 +37,7 @@ jobs:
         env:
           SAP_IS_PRD_CLIENT_ID: ${{ secrets.SAP_IS_PRD_CLIENT_ID }}
           SAP_IS_PRD_CLIENT_SECRET: ${{ secrets.SAP_IS_PRD_CLIENT_SECRET }}
-          DRIFT_NOTIFY_WEBHOOK_URL: ${{ secrets.DRIFT_NOTIFY_WEBHOOK_URL }}
-        run: |
+         run: |
           set +e
           PKG_ARG=""
           if [ -n "${{ inputs.packages }}" ]; then
