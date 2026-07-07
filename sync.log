@@ -1,9 +1,9 @@
-2026-07-07 08:46:36 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-07 08:46:37 | INFO    | Authenticated OK
-2026-07-07 08:46:38 | INFO    | Found 947 integration package(s) on tenant
-2026-07-07 08:46:38 | INFO    | Package filter applied: 1 of 947 package(s) selected
-2026-07-07 08:46:43 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-07 08:46:43 | INFO    | Sync summary: 0 synced, 3 forward drift, 0 reverse drift, 0 cert warning(s)
-2026-07-07 08:46:43 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
-2026-07-07 08:46:43 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test]
-2026-07-07 08:46:43 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
+2026-07-07 08:48:20 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-07 08:48:21 | INFO    | Authenticated OK
+2026-07-07 08:48:22 | INFO    | Found 947 integration package(s) on tenant
+2026-07-07 08:48:22 | INFO    | Package filter applied: 1 of 947 package(s) selected
+2026-07-07 08:48:23 | INFO    | New version detected: [iflow] IF_Automation_Test  1.0.1 -> 1.0.2
+2026-07-07 08:48:25 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-07 08:48:25 | INFO    | Sync summary: 1 synced, 2 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 08:48:25 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
+2026-07-07 08:48:25 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
