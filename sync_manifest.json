@@ -172,11 +172,11 @@
   },
   "test_123": {
     "class": "iflow",
-    "content_sha256": "d449e98895c20507631432b853f46111c02a7c85df811ddf27628365b78a4a15",
-    "last_synced": "2026-07-07T11:10:44.677164+00:00",
+    "content_sha256": "683f9c748370fba26801b56550aa58b1afc73e0c27c12e1306e0ffaa709ea8a6",
+    "last_synced": "2026-07-07T11:13:58.940991+00:00",
     "name": "test",
     "package_id": "AAA",
-    "source_sha256": "d449e98895c20507631432b853f46111c02a7c85df811ddf27628365b78a4a15",
-    "version": "Active"
+    "source_sha256": "683f9c748370fba26801b56550aa58b1afc73e0c27c12e1306e0ffaa709ea8a6",
+    "version": "1.0.1"
   }
 }

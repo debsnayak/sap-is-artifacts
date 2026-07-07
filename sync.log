@@ -1,15 +1,15 @@
-2026-07-07 11:10:32 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-07 11:10:33 | INFO    | Authenticated OK
-2026-07-07 11:10:35 | INFO    | Found 948 integration package(s) on tenant
-2026-07-07 11:10:35 | INFO    | Package filter applied: 1 of 948 package(s) selected
-2026-07-07 11:10:35 | INFO    | New package version detected: AAA  (none) -> 1.0.0
-2026-07-07 11:10:41 | WARNING | Whole-package export failed for 'AAA' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('AAA')/$value
-2026-07-07 11:10:42 | INFO    | New version detected: [iflow] WK_TEST_2  (none) -> Active
-2026-07-07 11:10:42 | INFO    | New version detected: [iflow] Reusable_Notification_Framework  (none) -> Active
-2026-07-07 11:10:43 | INFO    | New version detected: [iflow] test  (none) -> Active
-2026-07-07 11:10:44 | INFO    | New version detected: [iflow] Reusable_Retry_Framework  (none) -> Active
-2026-07-07 11:10:45 | INFO    | New version detected: [iflow] Persist_Payload_Process  (none) -> Active
-2026-07-07 11:10:46 | INFO    | New version detected: [iflow] Demo_-_Order_Create_S4_to_External_OMS  (none) -> 1.0.0
-2026-07-07 11:10:47 | INFO    | New version detected: [iflow] WK_TEST_1  (none) -> Active
-2026-07-07 11:10:48 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-07 11:10:48 | INFO    | Sync summary: 7 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 11:13:49 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-07 11:13:49 | INFO    | Authenticated OK
+2026-07-07 11:13:51 | INFO    | Found 948 integration package(s) on tenant
+2026-07-07 11:13:51 | INFO    | Package filter applied: 1 of 948 package(s) selected
+2026-07-07 11:13:51 | INFO    | New package version detected: AAA  (none) -> 1.0.0
+2026-07-07 11:13:57 | WARNING | Whole-package export failed for 'AAA' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('AAA')/$value
+2026-07-07 11:13:58 | INFO    | New version detected: [iflow] test  Active -> 1.0.1
+2026-07-07 11:14:05 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-07 11:14:05 | INFO    | Sync summary: 1 synced, 6 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [WK_TEST_2]
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Reusable_Notification_Framework]
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Reusable_Retry_Framework]
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Persist_Payload_Process]
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Demo_-_Order_Create_S4_to_External_OMS]
+2026-07-07 11:14:05 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [WK_TEST_1]
