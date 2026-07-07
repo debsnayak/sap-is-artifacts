@@ -57,6 +57,16 @@ def atomic_write_text(path: Path, content: str):
     tmp.write_text(content)
     os.replace(tmp, path)  # atomic on POSIX and Windows
 
+
+def atomic_write_bytes(path: Path, data: bytes):
+    """Same guarantee as atomic_write_text but for binary content (used to store the
+    raw SAP IS export zip byte-for-byte, so a killed/cancelled run can never leave a
+    truncated/corrupt zip behind)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + f".tmp{os.getpid()}")
+    tmp.write_bytes(data)
+    os.replace(tmp, path)
+
 # --------------------------------------------------------------------------
 # Config
 # --------------------------------------------------------------------------
@@ -279,6 +289,37 @@ def extract_zip(content: bytes, dest_dir: Path):
         zf.extractall(dest_dir)
 
 
+def zip_artifact_for_restore(artifact_dir: Path, output_zip: Path = None) -> Path:
+    """Zip an artifact folder's CONTENTS (not the folder itself) so the result is a
+    valid SAP IS import package as-is - no manual 're-zip the right way' step needed.
+
+    This is the inverse of extract_zip(): SAP IS expects META-INF/, metainfo.prop, and
+    src/main/resources/ at the ROOT of the zip. Naively zipping the folder (e.g. right-click
+    -> Compress, or `zip -r x.zip folder/`) nests everything one level too deep and SAP IS
+    rejects or silently mishandles the import. This function always writes entries with
+    paths relative to artifact_dir's contents, so the root is correct regardless of platform
+    or which zip tool would otherwise have been used.
+    """
+    artifact_dir = Path(artifact_dir).resolve()
+    if not artifact_dir.is_dir():
+        raise FileNotFoundError(f"Not a directory: {artifact_dir}")
+
+    if output_zip is None:
+        output_zip = artifact_dir.parent / f"{artifact_dir.name}.zip"
+    output_zip = Path(output_zip)
+
+    # Sidecar metadata lives next to the folder (see sync engine), so it's naturally
+    # excluded already - nothing to filter out. Any stray .artifact.json inside an
+    # older-style folder is skipped defensively anyway.
+    with zipfile.ZipFile(output_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+        for f in sorted(artifact_dir.rglob("*")):
+            if f.is_file() and f.name != "artifact.json":
+                arcname = f.relative_to(artifact_dir).as_posix()  # forward slashes, cross-platform
+                zf.write(f, arcname)
+
+    return output_zip
+
+
 def run_git(repo_dir: str, *args) -> str:
     result = subprocess.run(["git", "-C", repo_dir, *args], capture_output=True, text=True)
     if result.returncode != 0:
@@ -381,17 +422,22 @@ class SyncEngine:
         current_version = str(art.get("Version"))
 
         manifest_entry = self.manifest.get(artifact_id)
-        artifact_dir = self.repo_root / "packages" / pkg_name / cls_meta["folder"] / artifact_name
+        # The artifact is stored as a single zip file - exactly the bytes SAP IS exported,
+        # byte-for-byte. No extraction, no re-zipping ever needed: pull this file from the
+        # repo and import it into SAP IS as-is.
+        class_dir = self.repo_root / "packages" / pkg_name / cls_meta["folder"]
+        artifact_zip_path = class_dir / f"{artifact_name}.zip"
+        sidecar_path = class_dir / f"{artifact_name}.json"
 
-        # --- Reverse drift check: has the on-disk copy been hand-edited since last sync? ---
-        if manifest_entry and artifact_dir.exists():
-            on_disk_hash = sha256_dir(artifact_dir)
+        # --- Reverse drift check: has the on-disk zip been hand-edited since last sync? ---
+        if manifest_entry and artifact_zip_path.exists():
+            on_disk_hash = sha256_bytes(artifact_zip_path.read_bytes())
             if on_disk_hash != manifest_entry.get("content_sha256"):
                 self.report.reverse_drift.append({
                     "artifact_id": artifact_id,
                     "name": artifact_name,
                     "package": pkg_name,
-                    "message": "Repository content differs from last synced state without a new sync run "
+                    "message": "Repository zip differs from last synced state without a new sync run "
                                "- possible manual edit in Git outside the pipeline.",
                 })
 
@@ -423,8 +469,9 @@ class SyncEngine:
         source_hash = sha256_bytes(content)
 
         if not self.dry_run:
-            extract_zip(content, artifact_dir)
-            atomic_write_text(artifact_dir / "artifact.json", json.dumps({
+            # Write the raw zip exactly as downloaded - this IS the SAP IS export, unmodified.
+            atomic_write_bytes(artifact_zip_path, content)
+            atomic_write_text(sidecar_path, json.dumps({
                 "id": artifact_id,
                 "name": art.get("Name"),
                 "class": cls_key,
@@ -433,9 +480,9 @@ class SyncEngine:
                 "sha256": source_hash,
                 "synced_at": datetime.now(timezone.utc).isoformat(),
             }, indent=2))
-            content_hash = sha256_dir(artifact_dir)
+            content_hash = source_hash  # stored file is byte-identical to what was downloaded
         else:
-            content_hash = source_hash  # best effort in dry-run, no extraction performed
+            content_hash = source_hash  # best effort in dry-run, no write performed
 
         self.manifest.update(
             artifact_id,
@@ -580,8 +627,8 @@ def notify_drift(report: DriftReport, cfg: EnvConfig):
 
 def main():
     parser = argparse.ArgumentParser(description="Sync SAP Integration Suite artifacts to GitHub with drift detection")
-    parser.add_argument("--env", required=True, help="Environment name as defined in the config file")
-    parser.add_argument("--config", required=True, help="Path to environments.yaml")
+    parser.add_argument("--env", help="Environment name as defined in the config file")
+    parser.add_argument("--config", help="Path to environments.yaml")
     parser.add_argument("--dry-run", action="store_true", help="Do not write files or push to git")
     parser.add_argument("--no-push", action="store_true", help="Write files/commit locally but do not push")
     parser.add_argument(
@@ -595,7 +642,28 @@ def main():
         help="Authenticate, print every package Id/Name available on the tenant, and exit "
              "(use this first to find the exact names to pass to --packages).",
     )
+    parser.add_argument(
+        "--make-restore-zip",
+        metavar="ARTIFACT_DIR",
+        help="Legacy-compatibility command for repos synced before artifacts were stored as "
+             "raw zips: re-zips an extracted artifact FOLDER's contents into a ready-to-import "
+             "ZIP. Not needed for artifacts synced by the current version of this script - those "
+             "are already stored as a ready-to-import .zip file, no re-zipping required.",
+    )
+    parser.add_argument(
+        "--output",
+        help="Optional output path for --make-restore-zip (defaults to <ARTIFACT_DIR>.zip next to the folder)",
+    )
     args = parser.parse_args()
+
+    if args.make_restore_zip:
+        out = zip_artifact_for_restore(Path(args.make_restore_zip), Path(args.output) if args.output else None)
+        log.info("Restore-ready zip written to: %s", out)
+        log.info("Upload this file as-is in SAP IS (Import Integration Flow / Mapping / Script Collection).")
+        return
+
+    if not args.env or not args.config:
+        parser.error("--env and --config are required unless using --make-restore-zip")
 
     cfg = load_config(args.config, args.env)
     client = SapIsClient(cfg)
