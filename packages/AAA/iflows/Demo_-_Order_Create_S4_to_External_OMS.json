@@ -1,0 +1,9 @@
+{
+  "id": "Demo_Order_Create_S4_External",
+  "name": "Demo - Order Create S4 to External OMS",
+  "class": "iflow",
+  "package_id": "AAA",
+  "version": "1.0.0",
+  "sha256": "ea241c106c4f126b7f7b9521a70bfd82cff00ed6c374a4255a1c1ef9d06f5124",
+  "synced_at": "2026-07-07T11:10:47.062776+00:00"
+}

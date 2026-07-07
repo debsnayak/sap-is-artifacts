@@ -8,6 +8,15 @@
     "source_sha256": "31ca9cdea865baa2a633404fc5adf5f8621136d7c482ded8fe85f879d0aa56da",
     "version": "1.0.1"
   },
+  "Demo_Order_Create_S4_External": {
+    "class": "iflow",
+    "content_sha256": "ea241c106c4f126b7f7b9521a70bfd82cff00ed6c374a4255a1c1ef9d06f5124",
+    "last_synced": "2026-07-07T11:10:47.062932+00:00",
+    "name": "Demo - Order Create S4 to External OMS",
+    "package_id": "AAA",
+    "source_sha256": "ea241c106c4f126b7f7b9521a70bfd82cff00ed6c374a4255a1c1ef9d06f5124",
+    "version": "1.0.0"
+  },
   "IF_Automation_Test": {
     "class": "iflow",
     "content_sha256": "970bd1ac86139c781d02317a7577527d18d15cac97191615a5f2411a0471f7cd",
@@ -53,6 +62,15 @@
     "source_sha256": "a0df78be88f92921d1167b5a96ed490e52679c8837a8af0466a9cd90f922317f",
     "version": "1.0.4"
   },
+  "Persist_Payload_Process": {
+    "class": "iflow",
+    "content_sha256": "181367ce8b0b6eaf13fe2ab1dfaf8c0f16e10b34f5ebdff85026415f3307685e",
+    "last_synced": "2026-07-07T11:10:46.189260+00:00",
+    "name": "Persist Payload Process",
+    "package_id": "AAA",
+    "source_sha256": "181367ce8b0b6eaf13fe2ab1dfaf8c0f16e10b34f5ebdff85026415f3307685e",
+    "version": "Active"
+  },
   "RFCPayload_VM": {
     "class": "value_mapping",
     "content_sha256": "89c65abef38fe72d2d174a59d4701f28a72d070927843b271fd50b893d8e8f58",
@@ -89,6 +107,24 @@
     "source_sha256": "0235fb6cd46178a76173f06adac12b6c497a572fc38a804ecacf1cbc76f97d05",
     "version": "1.0.18"
   },
+  "Reusable_Notification_Framework": {
+    "class": "iflow",
+    "content_sha256": "294c987c0b5a7b498504e48abc0607f2984f1e52cf5917508e788fbadbcc3277",
+    "last_synced": "2026-07-07T11:10:43.715220+00:00",
+    "name": "Reusable Notification Framework",
+    "package_id": "AAA",
+    "source_sha256": "294c987c0b5a7b498504e48abc0607f2984f1e52cf5917508e788fbadbcc3277",
+    "version": "Active"
+  },
+  "Reusable_Retry_Framework": {
+    "class": "iflow",
+    "content_sha256": "f098b0ce2d8c52386a2824794b7d2a6ae08d880f3465e1f59c5db50cff2035eb",
+    "last_synced": "2026-07-07T11:10:45.561830+00:00",
+    "name": "Reusable Retry Framework",
+    "package_id": "AAA",
+    "source_sha256": "f098b0ce2d8c52386a2824794b7d2a6ae08d880f3465e1f59c5db50cff2035eb",
+    "version": "Active"
+  },
   "SFTP_TO_SFTP_Scenario_with_Archive": {
     "class": "iflow",
     "content_sha256": "c43e5306c4b983ee8317ff43e697edc6fe16582f0bbc115ce6c894551b514a8f",
@@ -107,6 +143,24 @@
     "source_sha256": "8c4ea81b3edff852e84763bf8431111b8bf325700d45cabfbccf30929faec33f",
     "version": "Active"
   },
+  "WK_TEST_1": {
+    "class": "iflow",
+    "content_sha256": "7a2452f771c481a3cae3ffb0e8aae51db4e661a4e3216678ff3cd7e985100415",
+    "last_synced": "2026-07-07T11:10:47.750471+00:00",
+    "name": "WK_TEST_1",
+    "package_id": "AAA",
+    "source_sha256": "7a2452f771c481a3cae3ffb0e8aae51db4e661a4e3216678ff3cd7e985100415",
+    "version": "Active"
+  },
+  "WK_TEST_2": {
+    "class": "iflow",
+    "content_sha256": "a174bd91d6dac58555b87e4838ba4a0ad3678b8e3c5c909c3a819407ee8df110",
+    "last_synced": "2026-07-07T11:10:42.830784+00:00",
+    "name": "WK_TEST_2",
+    "package_id": "AAA",
+    "source_sha256": "a174bd91d6dac58555b87e4838ba4a0ad3678b8e3c5c909c3a819407ee8df110",
+    "version": "Active"
+  },
   "package:CICDAutomation": {
     "class": "package",
     "content_sha256": "2541937ab6410cde2a3637edc14ed3b0ffbd24bc94fe74e3fe8855c3485075e4",
@@ -115,5 +169,14 @@
     "package_id": "CICDAutomation",
     "source_sha256": "2541937ab6410cde2a3637edc14ed3b0ffbd24bc94fe74e3fe8855c3485075e4",
     "version": "1.0.0"
+  },
+  "test_123": {
+    "class": "iflow",
+    "content_sha256": "d449e98895c20507631432b853f46111c02a7c85df811ddf27628365b78a4a15",
+    "last_synced": "2026-07-07T11:10:44.677164+00:00",
+    "name": "test",
+    "package_id": "AAA",
+    "source_sha256": "d449e98895c20507631432b853f46111c02a7c85df811ddf27628365b78a4a15",
+    "version": "Active"
   }
 }

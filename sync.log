@@ -1,17 +1,15 @@
-2026-07-07 11:08:01 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-07 11:08:01 | INFO    | Authenticated OK
-2026-07-07 11:08:03 | INFO    | Found 948 integration package(s) on tenant
-2026-07-07 11:08:03 | INFO    | Package filter applied: 1 of 948 package(s) selected
-2026-07-07 11:08:03 | INFO    | New package version detected: CITGO_POC  (none) -> 1.0.0
-2026-07-07 11:08:09 | WARNING | Whole-package export failed for 'CITGO_POC' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('CITGOPOC')/$value
-2026-07-07 11:08:09 | INFO    | New version detected: [iflow] RFC_TO_SFTP_XML_TO_CSV  (none) -> 1.0.14
-2026-07-07 11:08:10 | INFO    | New version detected: [iflow] SFTP_TO_SFTP_Scenario_with_Archival  (none) -> 1.0.1
-2026-07-07 11:08:11 | INFO    | New version detected: [iflow] CITGO_ABAP_Objects_Collection_001  (none) -> 1.0.1
-2026-07-07 11:08:12 | INFO    | New version detected: [iflow] IF_RFC_TO_SFTP_XML_TO_CSV  (none) -> 1.0.18
-2026-07-07 11:08:13 | INFO    | New version detected: [iflow] Terumo_POC  (none) -> Active
-2026-07-07 11:08:15 | INFO    | New version detected: [value_mapping] RFC_Parameter_VM  (none) -> 1.0.5
-2026-07-07 11:08:15 | INFO    | New version detected: [value_mapping] RFC_Sequence_VM  (none) -> 1.0.4
-2026-07-07 11:08:16 | INFO    | New version detected: [value_mapping] RFC_State_VM  (none) -> 1.0.1
-2026-07-07 11:08:16 | INFO    | New version detected: [value_mapping] SFTP_DirectoryPath_VM  (none) -> 1.0.4
-2026-07-07 11:08:17 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-07 11:08:17 | INFO    | Sync summary: 9 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-07 11:10:32 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-07 11:10:33 | INFO    | Authenticated OK
+2026-07-07 11:10:35 | INFO    | Found 948 integration package(s) on tenant
+2026-07-07 11:10:35 | INFO    | Package filter applied: 1 of 948 package(s) selected
+2026-07-07 11:10:35 | INFO    | New package version detected: AAA  (none) -> 1.0.0
+2026-07-07 11:10:41 | WARNING | Whole-package export failed for 'AAA' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('AAA')/$value
+2026-07-07 11:10:42 | INFO    | New version detected: [iflow] WK_TEST_2  (none) -> Active
+2026-07-07 11:10:42 | INFO    | New version detected: [iflow] Reusable_Notification_Framework  (none) -> Active
+2026-07-07 11:10:43 | INFO    | New version detected: [iflow] test  (none) -> Active
+2026-07-07 11:10:44 | INFO    | New version detected: [iflow] Reusable_Retry_Framework  (none) -> Active
+2026-07-07 11:10:45 | INFO    | New version detected: [iflow] Persist_Payload_Process  (none) -> Active
+2026-07-07 11:10:46 | INFO    | New version detected: [iflow] Demo_-_Order_Create_S4_to_External_OMS  (none) -> 1.0.0
+2026-07-07 11:10:47 | INFO    | New version detected: [iflow] WK_TEST_1  (none) -> Active
+2026-07-07 11:10:48 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-07 11:10:48 | INFO    | Sync summary: 7 synced, 0 forward drift, 0 reverse drift, 0 cert warning(s)
