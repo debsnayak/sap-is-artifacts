@@ -771,7 +771,7 @@ def main():
         engine._commit_and_push = lambda: log.info("--no-push set: skipping push")  # noqa: SLF001
 
     report = engine.run()
-    notify_drift(report, cfg)
+    #notify_drift(report, cfg)
 
     # Non-zero exit on forward/reverse drift so CI can flag the run, without failing on cert warnings alone
     if report.forward_drift or report.reverse_drift:
