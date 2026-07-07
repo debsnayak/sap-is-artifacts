@@ -1,9 +1,0 @@
-{
-  "id": "RFC_State_VM",
-  "name": "RFC_State_VM",
-  "class": "value_mapping",
-  "package_id": "CITGOPOC",
-  "version": "1.0.1",
-  "sha256": "ee0d038935a0f353f76db31fe905e23dd2bb9a52c1c81c7462d614510adb6b1d",
-  "synced_at": "2026-07-07T11:08:16.445808+00:00"
-}

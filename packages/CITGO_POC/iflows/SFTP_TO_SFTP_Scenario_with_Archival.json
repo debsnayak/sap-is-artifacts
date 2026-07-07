@@ -1,9 +1,0 @@
-{
-  "id": "SFTP_TO_SFTP_Scenario_with_Archive",
-  "name": "SFTP_TO_SFTP_Scenario_with_Archival",
-  "class": "iflow",
-  "package_id": "CITGOPOC",
-  "version": "1.0.1",
-  "sha256": "c43e5306c4b983ee8317ff43e697edc6fe16582f0bbc115ce6c894551b514a8f",
-  "synced_at": "2026-07-07T11:08:11.431567+00:00"
-}

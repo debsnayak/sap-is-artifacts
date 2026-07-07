@@ -1,9 +1,0 @@
-{
-  "id": "RFC_Sequence_VM",
-  "name": "RFC_Sequence_VM",
-  "class": "value_mapping",
-  "package_id": "CITGOPOC",
-  "version": "1.0.4",
-  "sha256": "74883ed52220e14b80c3f26ab1cdd07d158081037a41c05aa1d5a5e777db6ef8",
-  "synced_at": "2026-07-07T11:08:16.066085+00:00"
-}
