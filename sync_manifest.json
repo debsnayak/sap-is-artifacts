@@ -1,0 +1,29 @@
+{
+  "IF_Automation_Test": {
+    "class": "iflow",
+    "content_sha256": "970bd1ac86139c781d02317a7577527d18d15cac97191615a5f2411a0471f7cd",
+    "last_synced": "2026-07-07T10:45:01.748219+00:00",
+    "name": "IF_Automation_Test",
+    "package_id": "CICDAutomation",
+    "source_sha256": "970bd1ac86139c781d02317a7577527d18d15cac97191615a5f2411a0471f7cd",
+    "version": "1.0.2"
+  },
+  "IF_Automation_Test2": {
+    "class": "iflow",
+    "content_sha256": "9750a007f1156c12074fe8c9086afbc83e8f511fc27790f549bf3011d790887f",
+    "last_synced": "2026-07-07T10:45:00.835730+00:00",
+    "name": "IF_Automation_Test2",
+    "package_id": "CICDAutomation",
+    "source_sha256": "9750a007f1156c12074fe8c9086afbc83e8f511fc27790f549bf3011d790887f",
+    "version": "1.0.1"
+  },
+  "MM_TestMapping": {
+    "class": "message_mapping",
+    "content_sha256": "142caa6af80ef887aa59be825777b4a3849e1755f6aff54a4a9bc0779309e6bd",
+    "last_synced": "2026-07-07T10:45:02.794562+00:00",
+    "name": "MM_TestMapping",
+    "package_id": "CICDAutomation",
+    "source_sha256": "142caa6af80ef887aa59be825777b4a3849e1755f6aff54a4a9bc0779309e6bd",
+    "version": "1.1.2"
+  }
+}
