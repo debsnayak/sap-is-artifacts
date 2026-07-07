@@ -1,0 +1,9 @@
+{
+  "id": "RFCPayload_VM",
+  "name": "RFC_Parameter_VM",
+  "class": "value_mapping",
+  "package_id": "CITGOPOC",
+  "version": "1.0.5",
+  "sha256": "89c65abef38fe72d2d174a59d4701f28a72d070927843b271fd50b893d8e8f58",
+  "synced_at": "2026-07-07T11:08:15.669825+00:00"
+}

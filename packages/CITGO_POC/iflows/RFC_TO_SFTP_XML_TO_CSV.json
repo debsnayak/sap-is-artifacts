@@ -1,0 +1,9 @@
+{
+  "id": "IF_CITGO_RFC_TO_SFTP_XML_TO_CSV",
+  "name": "RFC_TO_SFTP_XML_TO_CSV",
+  "class": "iflow",
+  "package_id": "CITGOPOC",
+  "version": "1.0.14",
+  "sha256": "c43e59957c141e9193c1da6d2d9c1d3677c170c325618b72802765c9f7778032",
+  "synced_at": "2026-07-07T11:08:10.520015+00:00"
+}

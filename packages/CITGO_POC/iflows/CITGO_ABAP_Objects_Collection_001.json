@@ -1,0 +1,9 @@
+{
+  "id": "CITGO_ABAP_Objects_Collection_001",
+  "name": "CITGO_ABAP_Objects_Collection_001",
+  "class": "iflow",
+  "package_id": "CITGOPOC",
+  "version": "1.0.1",
+  "sha256": "31ca9cdea865baa2a633404fc5adf5f8621136d7c482ded8fe85f879d0aa56da",
+  "synced_at": "2026-07-07T11:08:12.392539+00:00"
+}

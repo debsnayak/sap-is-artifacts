@@ -1,0 +1,9 @@
+{
+  "id": "Terumo_POC",
+  "name": "Terumo_POC",
+  "class": "iflow",
+  "package_id": "CITGOPOC",
+  "version": "Active",
+  "sha256": "8c4ea81b3edff852e84763bf8431111b8bf325700d45cabfbccf30929faec33f",
+  "synced_at": "2026-07-07T11:08:14.434070+00:00"
+}

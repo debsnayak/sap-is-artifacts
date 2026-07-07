@@ -1,0 +1,9 @@
+{
+  "id": "Mail_VM",
+  "name": "SFTP_DirectoryPath_VM",
+  "class": "value_mapping",
+  "package_id": "CITGOPOC",
+  "version": "1.0.4",
+  "sha256": "a0df78be88f92921d1167b5a96ed490e52679c8837a8af0466a9cd90f922317f",
+  "synced_at": "2026-07-07T11:08:16.890496+00:00"
+}

@@ -1,4 +1,13 @@
 {
+  "CITGO_ABAP_Objects_Collection_001": {
+    "class": "iflow",
+    "content_sha256": "31ca9cdea865baa2a633404fc5adf5f8621136d7c482ded8fe85f879d0aa56da",
+    "last_synced": "2026-07-07T11:08:12.392685+00:00",
+    "name": "CITGO_ABAP_Objects_Collection_001",
+    "package_id": "CITGOPOC",
+    "source_sha256": "31ca9cdea865baa2a633404fc5adf5f8621136d7c482ded8fe85f879d0aa56da",
+    "version": "1.0.1"
+  },
   "IF_Automation_Test": {
     "class": "iflow",
     "content_sha256": "970bd1ac86139c781d02317a7577527d18d15cac97191615a5f2411a0471f7cd",
@@ -17,6 +26,15 @@
     "source_sha256": "9750a007f1156c12074fe8c9086afbc83e8f511fc27790f549bf3011d790887f",
     "version": "1.0.1"
   },
+  "IF_CITGO_RFC_TO_SFTP_XML_TO_CSV": {
+    "class": "iflow",
+    "content_sha256": "c43e59957c141e9193c1da6d2d9c1d3677c170c325618b72802765c9f7778032",
+    "last_synced": "2026-07-07T11:08:10.520189+00:00",
+    "name": "RFC_TO_SFTP_XML_TO_CSV",
+    "package_id": "CITGOPOC",
+    "source_sha256": "c43e59957c141e9193c1da6d2d9c1d3677c170c325618b72802765c9f7778032",
+    "version": "1.0.14"
+  },
   "MM_TestMapping": {
     "class": "message_mapping",
     "content_sha256": "142caa6af80ef887aa59be825777b4a3849e1755f6aff54a4a9bc0779309e6bd",
@@ -25,6 +43,69 @@
     "package_id": "CICDAutomation",
     "source_sha256": "142caa6af80ef887aa59be825777b4a3849e1755f6aff54a4a9bc0779309e6bd",
     "version": "1.1.2"
+  },
+  "Mail_VM": {
+    "class": "value_mapping",
+    "content_sha256": "a0df78be88f92921d1167b5a96ed490e52679c8837a8af0466a9cd90f922317f",
+    "last_synced": "2026-07-07T11:08:16.890631+00:00",
+    "name": "SFTP_DirectoryPath_VM",
+    "package_id": "CITGOPOC",
+    "source_sha256": "a0df78be88f92921d1167b5a96ed490e52679c8837a8af0466a9cd90f922317f",
+    "version": "1.0.4"
+  },
+  "RFCPayload_VM": {
+    "class": "value_mapping",
+    "content_sha256": "89c65abef38fe72d2d174a59d4701f28a72d070927843b271fd50b893d8e8f58",
+    "last_synced": "2026-07-07T11:08:15.669974+00:00",
+    "name": "RFC_Parameter_VM",
+    "package_id": "CITGOPOC",
+    "source_sha256": "89c65abef38fe72d2d174a59d4701f28a72d070927843b271fd50b893d8e8f58",
+    "version": "1.0.5"
+  },
+  "RFC_Sequence_VM": {
+    "class": "value_mapping",
+    "content_sha256": "74883ed52220e14b80c3f26ab1cdd07d158081037a41c05aa1d5a5e777db6ef8",
+    "last_synced": "2026-07-07T11:08:16.066235+00:00",
+    "name": "RFC_Sequence_VM",
+    "package_id": "CITGOPOC",
+    "source_sha256": "74883ed52220e14b80c3f26ab1cdd07d158081037a41c05aa1d5a5e777db6ef8",
+    "version": "1.0.4"
+  },
+  "RFC_State_VM": {
+    "class": "value_mapping",
+    "content_sha256": "ee0d038935a0f353f76db31fe905e23dd2bb9a52c1c81c7462d614510adb6b1d",
+    "last_synced": "2026-07-07T11:08:16.445942+00:00",
+    "name": "RFC_State_VM",
+    "package_id": "CITGOPOC",
+    "source_sha256": "ee0d038935a0f353f76db31fe905e23dd2bb9a52c1c81c7462d614510adb6b1d",
+    "version": "1.0.1"
+  },
+  "RFC_TO_SFTP_XML_TO_CSV_copy": {
+    "class": "iflow",
+    "content_sha256": "0235fb6cd46178a76173f06adac12b6c497a572fc38a804ecacf1cbc76f97d05",
+    "last_synced": "2026-07-07T11:08:13.360256+00:00",
+    "name": "IF_RFC_TO_SFTP_XML_TO_CSV",
+    "package_id": "CITGOPOC",
+    "source_sha256": "0235fb6cd46178a76173f06adac12b6c497a572fc38a804ecacf1cbc76f97d05",
+    "version": "1.0.18"
+  },
+  "SFTP_TO_SFTP_Scenario_with_Archive": {
+    "class": "iflow",
+    "content_sha256": "c43e5306c4b983ee8317ff43e697edc6fe16582f0bbc115ce6c894551b514a8f",
+    "last_synced": "2026-07-07T11:08:11.431709+00:00",
+    "name": "SFTP_TO_SFTP_Scenario_with_Archival",
+    "package_id": "CITGOPOC",
+    "source_sha256": "c43e5306c4b983ee8317ff43e697edc6fe16582f0bbc115ce6c894551b514a8f",
+    "version": "1.0.1"
+  },
+  "Terumo_POC": {
+    "class": "iflow",
+    "content_sha256": "8c4ea81b3edff852e84763bf8431111b8bf325700d45cabfbccf30929faec33f",
+    "last_synced": "2026-07-07T11:08:14.434219+00:00",
+    "name": "Terumo_POC",
+    "package_id": "CITGOPOC",
+    "source_sha256": "8c4ea81b3edff852e84763bf8431111b8bf325700d45cabfbccf30929faec33f",
+    "version": "Active"
   },
   "package:CICDAutomation": {
     "class": "package",
