@@ -3,7 +3,7 @@
   "name": "IF_Automation_Test",
   "class": "iflow",
   "package_id": "CICDAutomation",
-  "version": "Active",
-  "sha256": "c71ea2f33565578224adfa5050c1249088daac44432fb33f091b63c5575ad23e",
-  "synced_at": "2026-07-24T11:04:02.122134+00:00"
+  "version": "1.0.2",
+  "sha256": "2c6317a86eb7c97320d1b382963dd7cd6a43fd2d570bc07f6174dc61b12efa33",
+  "synced_at": "2026-07-24T11:07:20.854408+00:00"
 }
