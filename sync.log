@@ -1,15 +1,10 @@
-2026-07-09 08:27:53 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-09 08:27:54 | INFO    | Authenticated OK
-2026-07-09 08:27:55 | INFO    | Found 956 integration package(s) on tenant
-2026-07-09 08:27:55 | INFO    | Package filter applied: 1 of 956 package(s) selected
-2026-07-09 08:27:55 | INFO    | New package version detected: AAA  (none) -> 1.0.0
-2026-07-09 08:28:02 | WARNING | Whole-package export failed for 'AAA' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('AAA')/$value
-2026-07-09 08:28:10 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-09 08:28:10 | INFO    | Sync summary: 0 synced, 7 forward drift, 0 reverse drift, 0 cert warning(s)
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [test]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [WK_TEST_2]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Reusable_Notification_Framework]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Reusable_Retry_Framework]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Persist_Payload_Process]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [Demo_-_Order_Create_S4_to_External_OMS]
-2026-07-09 08:28:10 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [WK_TEST_1]
+2026-07-24 11:03:54 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-24 11:03:55 | INFO    | Authenticated OK
+2026-07-24 11:03:56 | INFO    | Found 999 integration package(s) on tenant
+2026-07-24 11:03:56 | INFO    | Package filter applied: 1 of 999 package(s) selected
+2026-07-24 11:03:59 | WARNING | Whole-package export failed for 'CI_CD_Automation' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('CICDAutomation')/$value
+2026-07-24 11:04:00 | INFO    | New version detected: [iflow] IF_Automation_Test  1.0.2 -> Active
+2026-07-24 11:04:04 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-24 11:04:04 | INFO    | Sync summary: 1 synced, 2 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-24 11:04:04 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
+2026-07-24 11:04:04 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
