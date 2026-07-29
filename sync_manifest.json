@@ -10,12 +10,12 @@
   },
   "IF_Automation_Test": {
     "class": "iflow",
-    "content_sha256": "2c6317a86eb7c97320d1b382963dd7cd6a43fd2d570bc07f6174dc61b12efa33",
-    "last_synced": "2026-07-24T11:07:20.854680+00:00",
+    "content_sha256": "38b69e815879111a1ea27bb08f239e910cfdc2d5057a0835d18aa7237a246f97",
+    "last_synced": "2026-07-29T09:23:44.932397+00:00",
     "name": "IF_Automation_Test",
     "package_id": "CICDAutomation",
-    "source_sha256": "2c6317a86eb7c97320d1b382963dd7cd6a43fd2d570bc07f6174dc61b12efa33",
-    "version": "1.0.2"
+    "source_sha256": "38b69e815879111a1ea27bb08f239e910cfdc2d5057a0835d18aa7237a246f97",
+    "version": "Active"
   },
   "IF_Automation_Test2": {
     "class": "iflow",

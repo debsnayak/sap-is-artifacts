@@ -1,10 +1,10 @@
-2026-07-24 11:07:11 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-24 11:07:12 | INFO    | Authenticated OK
-2026-07-24 11:07:14 | INFO    | Found 1000 integration package(s) on tenant
-2026-07-24 11:07:14 | INFO    | Package filter applied: 1 of 1000 package(s) selected
-2026-07-24 11:07:19 | INFO    | New version detected: [iflow] IF_Automation_Test  Active -> 1.0.2
-2026-07-24 11:07:23 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-24 11:07:23 | INFO    | Sync summary: 1 synced, 3 forward drift, 0 reverse drift, 0 cert warning(s)
-2026-07-24 11:07:23 | WARNING | FORWARD DRIFT: SAP IS package content checksum changed without a version increment. [CI_CD_Automation]
-2026-07-24 11:07:23 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
-2026-07-24 11:07:23 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
+2026-07-29 09:23:37 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-29 09:23:38 | INFO    | Authenticated OK
+2026-07-29 09:23:39 | INFO    | Found 1003 integration package(s) on tenant
+2026-07-29 09:23:39 | INFO    | Package filter applied: 1 of 1003 package(s) selected
+2026-07-29 09:23:42 | WARNING | Whole-package export failed for 'CI_CD_Automation' (HTTP 500) - skipping package-level zip this run; individual artifact sync is unaffected. 500 Server Error: Internal Server Error for url: https://inccpidev.it-cpi001.cfapps.eu10.hana.ondemand.com/api/v1/IntegrationPackages('CICDAutomation')/$value
+2026-07-29 09:23:43 | INFO    | New version detected: [iflow] IF_Automation_Test  1.0.2 -> Active
+2026-07-29 09:23:47 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-29 09:23:47 | INFO    | Sync summary: 1 synced, 2 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-29 09:23:47 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
+2026-07-29 09:23:47 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
