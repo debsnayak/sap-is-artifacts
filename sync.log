@@ -1,10 +1,10 @@
-2026-07-29 09:26:15 | INFO    | Authenticating to SAP IS tenant (PRD)
-2026-07-29 09:26:16 | INFO    | Authenticated OK
-2026-07-29 09:26:17 | INFO    | Found 1003 integration package(s) on tenant
-2026-07-29 09:26:17 | INFO    | Package filter applied: 1 of 1003 package(s) selected
-2026-07-29 09:26:20 | INFO    | New version detected: [iflow] IF_Automation_Test  Active -> 1.0.3
-2026-07-29 09:26:25 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
-2026-07-29 09:26:25 | INFO    | Sync summary: 1 synced, 3 forward drift, 0 reverse drift, 0 cert warning(s)
-2026-07-29 09:26:25 | WARNING | FORWARD DRIFT: SAP IS package content checksum changed without a version increment. [CI_CD_Automation]
-2026-07-29 09:26:25 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
-2026-07-29 09:26:25 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
+2026-07-29 09:28:11 | INFO    | Authenticating to SAP IS tenant (PRD)
+2026-07-29 09:28:11 | INFO    | Authenticated OK
+2026-07-29 09:28:12 | INFO    | Found 1003 integration package(s) on tenant
+2026-07-29 09:28:12 | INFO    | Package filter applied: 1 of 1003 package(s) selected
+2026-07-29 09:28:15 | INFO    | New version detected: [iflow] IF_Automation_Test  1.0.3 -> 1.0.2
+2026-07-29 09:28:19 | WARNING | SecurityMaterials API not available on this tenant/plan - skipping certificate inventory
+2026-07-29 09:28:19 | INFO    | Sync summary: 1 synced, 3 forward drift, 0 reverse drift, 0 cert warning(s)
+2026-07-29 09:28:19 | WARNING | FORWARD DRIFT: SAP IS package content checksum changed without a version increment. [CI_CD_Automation]
+2026-07-29 09:28:19 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [IF_Automation_Test2]
+2026-07-29 09:28:19 | WARNING | FORWARD DRIFT: SAP IS content checksum changed without a version increment - artifact may have been saved without creating a new version. [MM_TestMapping]
