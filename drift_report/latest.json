@@ -1,15 +1,22 @@
 {
-  "generated_at": "2026-07-29T09:23:47.119714+00:00",
+  "generated_at": "2026-07-29T09:26:25.524445+00:00",
   "synced": [
     {
       "artifact_id": "IF_Automation_Test",
       "name": "IF_Automation_Test",
       "package": "CI_CD_Automation",
       "class": "iflow",
-      "version": "Active"
+      "version": "1.0.3"
     }
   ],
   "forward_drift": [
+    {
+      "artifact_id": "package:CICDAutomation",
+      "name": "CI_CD_Automation",
+      "package": "CI_CD_Automation",
+      "version": "1.0.0",
+      "message": "SAP IS package content checksum changed without a version increment."
+    },
     {
       "artifact_id": "IF_Automation_Test2",
       "name": "IF_Automation_Test2",
