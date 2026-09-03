@@ -1,0 +1,5 @@
+{"turn":1,"tool":"write_file","path":"/hpc/home/ttennant1/superwrangler-work/slot-28/debsnayak__sap-is-artifacts/./.superwrangler-notes.md","snap":"","existed_before":false}
+{"turn":1,"tool":"edit_file","path":"/hpc/home/ttennant1/superwrangler-work/slot-28/debsnayak__sap-is-artifacts/./packages/CI_CD_Automation/iflows/IF_Automation_Test.json","snap":"1/0.snap","existed_before":true}
+{"turn":1,"tool":"edit_file","path":"/hpc/home/ttennant1/superwrangler-work/slot-28/debsnayak__sap-is-artifacts/./packages/CI_CD_Automation/iflows/IF_Automation_Test2.json","snap":"1/1.snap","existed_before":true}
+{"turn":1,"tool":"edit_file","path":"/hpc/home/ttennant1/superwrangler-work/slot-28/debsnayak__sap-is-artifacts/./packages/CI_CD_Automation/message_mappings/MM_TestMapping.json","snap":"1/2.snap","existed_before":true}
+{"turn":1,"tool":"edit_file","path":"/hpc/home/ttennant1/superwrangler-work/slot-28/debsnayak__sap-is-artifacts/./sync_manifest.json","snap":"1/3.snap","existed_before":true}
